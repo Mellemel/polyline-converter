@@ -29,7 +29,4 @@ body {
 }
 input[type=submit] {
   cursor: pointer !important;
-  /* background-color: #0069d9;
-  border-color: #0062cc;
-  color: #fff; */
 }
