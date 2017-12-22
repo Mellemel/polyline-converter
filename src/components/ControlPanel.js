@@ -30,14 +30,14 @@ export default class ControlPanel extends React.Component {
                         <Input className='btn btn-primary' type='submit' value='Decode Polyline' />
                     </Form>
                 </div>
-                <div>
+                <div id="output">
                     <FormGroup>
                         <Label for='output-decoded'>Decoded Polyline</Label>
-                        <Input type='textarea' id='output-decoded' value={JSON.stringify(this.props.decoded)} />
+                        <Input readOnly type='textarea' id='output-decoded' value={this.props.decoded} />
                     </FormGroup>
                     <FormGroup>
                         <Label for='output-geojson'>GeoJson Output</Label>
-                        <Input type='textarea' id='output-geojson' value={JSON.stringify(this.props.geoJSON)}/>
+                        <Input readOnly type='textarea' id='output-geojson' value={this.props.geoJSON}/>
                     </FormGroup>
                 </div>
             </div>

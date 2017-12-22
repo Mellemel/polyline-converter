@@ -22,6 +22,8 @@ body {
   flex: 1;
 }
 #control-panel {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
 }
 #control-panel > div {
@@ -29,4 +31,17 @@ body {
 }
 input[type=submit] {
   cursor: pointer !important;
+}
+#output {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+#output > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+#output > div > textarea {
+  flex: 1;
 }
