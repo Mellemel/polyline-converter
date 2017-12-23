@@ -65,11 +65,11 @@
     "@turf/helpers": "^5.1.5",
     "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.0.0",
-    "mapbox-gl": "^0.42.2",
+    "mapbox-gl": "^0.43.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-mapbox-gl": "^3.4.0",
+    "react-mapbox-gl": "^3.4.1",
     "reactstrap": "^5.0.0-alpha.4"
   }
 }
