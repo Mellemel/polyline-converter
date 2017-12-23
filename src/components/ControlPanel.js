@@ -1,12 +1,11 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
-import PropTypes from 'prop-types';
 
 export default class ControlPanel extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            text: 'jxvbM}rlwF`FaFDEDCBEBEBEBCBEBE@EBE@E@E@E@E?ENkB@C?E?E?C?EAE?CAE?EACAE?EACAECEk@gBqEcN}@qCcDyJWiA]yBW{AMu@Ou@CGAICICIEICGEIEIEGGGEIGGGGGGGGiBuACCECCACCCCCCCACCCCACCCCCCAACCCw@gASWw@cAqDcFEGsK}NCECGCECECECGAECGAEAGAGCG?EAGAG[wCyBaUuDw`@UiCGm@CUGYIWIUWo@s@wAaJkRcH}NSe@Wg@[m@Wa@yCuEqMaSyL_RiMqRmMwRgUw]iHyKk@{@OWMWMYK]Qk@Qq@u@{CS{@W}@Us@]}@[m@]k@wAiCaBwC_AaBq@uA_@{@a@_A[gA_@uAS{@OcAMeA]gEKgAA]?W@WBWDSDW\eANg@FYDW@Q@uATkY?qCWySEiAIcAGo@KiA]yByAyHmAgFMi@Sq@Qa@Qc@Sc@S_@yA{BcM{QmBaCqDoEw@_AsU_^KQoSc[IKIKGMIKGMIKGKGMGKGKEKGKEMEKEKa@_AYeASmAIgAS}EG_AM}@Ma@M]Ue@_@g@{AaCcPmV{b@cp@i\eg@wSk[ea@ym@w\wg@yg@}v@eYub@eWe`@eA}AOSQSUSSS_@W_@S_@Qc@Qc@Q{SuF_AWs@Uc@Sa@UYUYUYa@aBeCcUc]yBgDiBmCcAmAkAkAsAeA_DcCeKmHsAw@c@YyCuB{BaB}@m@aAi@_Ac@sAi@y@a@w@e@q@k@_AoAuD_GiO}U_A{A{@_ByBeEWi@[s@iCsGsAqDoEyK',
+            text: 'jxvbM}rlwF`FaFDEDCBEBEBEBCBEBE@EBE@E@E@E@E?ENkB@C?E?E?C?EAE?CAE?EACAE?EACAECEk@gBqEcN}@qCcDyJWiA]yBW{AMu@Ou@CGAICICIEICGEIEIEGGGEIGGGGGGGGiBuACCECCACCCCCCCACCCCACCCCCCAACCCw@gASWw@cAqDcFEGsK}NCECGCECECECGAECGAEAGAGCG?EAGAG[wCyBaUuDw`@UiCGm@CUGYIWIUWo@s@wAaJkRcH}NSe@Wg@[m@Wa@yCuEqMaSyL_RiMqRmMwRgUw]iHyKk@{@OWMWMYK]Qk@Qq@u@{CS{@W}@Us@]}@[m@]k@wAiCaBwC_AaBq@uA_@{@a@_A[gA_@uAS{@OcAMeA]gEKgAA]?W@WBWDSDW\eANg@FYDW@Q@uATkY?qCWySEiAIcAGo@KiA]yByAyHmAgFMi@Sq@Qa@Qc@Sc@S_@yA{BcM{QmBaCqDoEw@_AsU_^KQoSc[IKIKGMIKGMIKGKGMGKGKEKGKEMEKEKa@_AYeASmAIgAS}EG_AM}@Ma@M]Ue@_@g@{AaCcPmV{b@cp@i\eg@wSk[ea@ym@w\wg@yg@}v@eYub@eWe`@eA}AOSQSUSSS_@W_@S_@Qc@Qc@Q{SuF_AWs@Uc@Sa@UYUYUYa@aBeCcUc]yBgDiBmCcAmAkAkAsAeA_DcCeKmHsAw@c@YyCuB{BaB}@m@aAi@_Ac@sAi@y@a@w@e@q@k@_AoAuD_GiO}U_A{A{@_ByBeEWi@[s@iCsGsAqDoEyK'
         }
         this.onChange = this.onChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
