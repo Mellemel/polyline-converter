@@ -5,7 +5,7 @@ import React from 'react';
 import polyline from '@mapbox/polyline';
 import { lineString as createLineString } from '@turf/helpers';
 import bbox from '@turf/bbox';
-import ReactMapboxGl, { Layer, Feature, ZoomControl, ScaleControl, RotationControl } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature, ZoomControl, RotationControl } from 'react-mapbox-gl';
 import ControlPanel from './ControlPanel';
 
 const Map = ReactMapboxGl({
@@ -20,14 +20,14 @@ export default class AppComponent extends React.Component {
     this.state = {
       decoded: {},
       geoJSON: {},
-      bbox: [[]]
-    }
-    this.setOutput = this.setOutput.bind(this)
+      bbox: null
+    };
+    this.setOutput = this.setOutput.bind(this);
+    this.onError = this.onError.bind(this);
   }
   setOutput(value) {
     const decoded = polyline.decode(value)
     const lineString = createLineString(decoded)
-    console.log(bbox(lineString))
     this.setState({
       decoded: {
         value: decoded,
@@ -40,6 +40,9 @@ export default class AppComponent extends React.Component {
       bbox: bbox(lineString)
     })
   }
+  onError(map, evt) {
+    console.log(map, evt)
+  }
   render() {
     const { decoded, geoJSON, bbox } = this.state
     return (
@@ -48,13 +51,16 @@ export default class AppComponent extends React.Component {
           style='mapbox://styles/mapbox/light-v9'
           containerStyle={{ flex: 2 }}
           center={CENTER}
+          onError={this.onError}
           fitBounds={bbox}
           fitBoundsOptions={{ padding: 100 }}>
           <ZoomControl position='bottom-right' />
           <RotationControl position='bottom-right' />
-          <Layer type='line'>
-            <Feature coordinates={decoded.value} />
-          </Layer>
+          {decoded.value &&
+            <Layer type='line'>
+              <Feature coordinates={decoded.value} />
+            </Layer>
+          }
         </Map>
         <ControlPanel
           handleSubmit={this.setOutput}
