@@ -4,11 +4,13 @@ import 'styles/App.css';
 import React from 'react';
 import polyline from '@mapbox/polyline';
 import { lineString as createLineString } from '@turf/helpers';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import bbox from '@turf/bbox';
+import ReactMapboxGl, { Layer, Feature, ZoomControl, ScaleControl, RotationControl } from 'react-mapbox-gl';
 import ControlPanel from './ControlPanel';
 
 const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoibWVsbGVtZWwiLCJhIjoiY2piZnptNnVjMWRpYTJxcXlqOW5tMTR6eCJ9.RLwwvVI7MfAzgLdFpaU0fg'
+  accessToken: 'pk.eyJ1IjoibWVsbGVtZWwiLCJhIjoiY2piZnptNnVjMWRpYTJxcXlqOW5tMTR6eCJ9.RLwwvVI7MfAzgLdFpaU0fg',
+  attributionControl: false
 })
 const CENTER = [-73.96476745605469, 40.783141078983206];
 
@@ -17,13 +19,15 @@ export default class AppComponent extends React.Component {
     super(props)
     this.state = {
       decoded: {},
-      geoJSON: {}
+      geoJSON: {},
+      bbox: [[]]
     }
     this.setOutput = this.setOutput.bind(this)
   }
   setOutput(value) {
     const decoded = polyline.decode(value)
     const lineString = createLineString(decoded)
+    console.log(bbox(lineString))
     this.setState({
       decoded: {
         value: decoded,
@@ -32,18 +36,22 @@ export default class AppComponent extends React.Component {
       geoJSON: {
         value: lineString,
         text: JSON.stringify(lineString, undefined, 3)
-      }
+      },
+      bbox: bbox(lineString)
     })
   }
   render() {
-    const { decoded, geoJSON } = this.state
+    const { decoded, geoJSON, bbox } = this.state
     return (
       <div className="index">
         <Map
           style='mapbox://styles/mapbox/light-v9'
           containerStyle={{ flex: 2 }}
           center={CENTER}
-          fitBounds={decoded.value}>
+          fitBounds={bbox}
+          fitBoundsOptions={{ padding: 100 }}>
+          <ZoomControl position='bottom-right' />
+          <RotationControl position='bottom-right' />
           <Layer type='line'>
             <Feature coordinates={decoded.value} />
           </Layer>
